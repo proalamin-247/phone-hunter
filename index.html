@@ -22,6 +22,60 @@
       Search Your Favorite Phone & know Full Specifications
     </h1>
 
+    <!-- seach food area  -->
+    <div class="input-group mb-3 mx-auto w-50">
+      <input
+        id="search-filed"
+        type="text"
+        class="form-control"
+        placeholder="search the Phone you want"
+        aria-label="Recipient's username"
+        aria-describedby="button-addon2"
+      />
+      <button
+        onclick="searchPhone()"
+        class="btn btn-outline-secondary"
+        type="button"
+        id="button-search"
+      >
+        Search
+      </button>
+    </div>
+
+    <!-- Phone search result START -->
+    <section class="container">
+        <div id="search-result" class="row row-cols-1 row-cols-md-3 g-2">
+      <div class="col">
+          <div class="card h-100">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+      <div class="col">
+          <div class="card h-100">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+      <div class="col">
+          <div class="card h-100">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+    </div>
+    </section>
+    <!-- Phone search result END-->
+
     <!-- bootstrap js link  -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
