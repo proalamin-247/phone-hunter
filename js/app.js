@@ -6,13 +6,19 @@ const searchPhone = () => {
     //clear input value
     searchField.value = '';
 
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displaySearchResult(data.data));
-
+    if (searchText == '' || null || undefined){
+        wrongMessage.style.display = 'block';
+    }
+    else{
+        wrongMessage.style.display = 'none';
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => displaySearchResult(data.data));
+    }
 }
 
+const wrongMessage = document.getElementById('wrongInputMessage');
 const searchResult = document.getElementById('search-result');
 const phoneDetailsArea = document.getElementById('phone-details');
 
