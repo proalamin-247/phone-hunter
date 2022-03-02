@@ -1,7 +1,9 @@
+/* body stle  */
 body {
   background-color: rgba(222, 241, 215, 0.411);
 }
 
+/* same style element  */
 #wrongInputMessage ,#notFoundMessage, #searchResultCount{
   display: none;
 }
