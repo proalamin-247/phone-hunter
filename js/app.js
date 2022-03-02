@@ -8,6 +8,7 @@ const searchPhone = () => {
 
     if (searchText == '' || null || undefined){
         wrongMessage.style.display = 'block';
+        // notFoundMessage.style.display = 'none';
     }
     else{
         wrongMessage.style.display = 'none';
@@ -17,6 +18,9 @@ const searchPhone = () => {
             .then(data => displaySearchResult(data.data));
     }
 }
+const searchField = document.getElementById('search-filed');
+const searchText = searchField.value;
+
 
 const wrongMessage = document.getElementById('wrongInputMessage');
 const searchResult = document.getElementById('search-result');
@@ -25,26 +29,33 @@ const phoneDetailsArea = document.getElementById('phone-details');
 // display search result 
 const displaySearchResult = (phones) => {
     
-    searchResult.innerHTML = '';
-    phoneDetailsArea.innerHTML = '';
+    if(searchText == phones){
+        notFoundMessage.style.display = 'block';
+        searchResult.innerHTML = '';
+    }
 
-    phones.forEach(phone => {
+    else{
+        searchResult.innerHTML = '';
+        phoneDetailsArea.innerHTML = '';
+        notFoundMessage.style.display = 'none';
 
-        const div = document.createElement('div');
-        div.classList.add('col');
-        div.innerHTML = `
-        <div class="card h-100">
-            <img src="${phone.image}" class="card-img-top img-fluid w-50 mx-auto p-3" alt="...">
-            <div class="card-body">
-            <h5 class="card-title">${phone.phone_name}</h5>
-              <p class="card-text">Brand: ${phone.brand}</p>
-              
+        phones.forEach(phone => {
+            const div = document.createElement('div');
+            div.classList.add('col');
+            div.innerHTML = `
+            <div class="card h-100">
+                <img src="${phone.image}" class="card-img-top img-fluid w-50 mx-auto p-3" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">${phone.phone_name}</h5>
+                <p class="card-text">Brand: ${phone.brand}</p>
+                
+                </div>
+                <div onclick= "phoneDetails('${phone.slug}')" class="btn btn-info">More Details</div> 
             </div>
-            <div onclick= "phoneDetails('${phone.slug}')" class="btn btn-info">More Details</div> 
-        </div>
-        `;
-        searchResult.appendChild(div);
-    })
+            `;
+            searchResult.appendChild(div);
+        })
+    }
 }
 
 
@@ -88,5 +99,6 @@ const displayPhoneDetails = phoneDetails =>{
             <p class="card-text">WLAN: ${phoneDetails.others.WLAN}</p>
         </div>
     </div>
-    `
+    `;
+    window.scrollTo(0, 0);
 }
