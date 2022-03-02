@@ -1,3 +1,11 @@
+// get all Element by ID 
+const searchField = document.getElementById('search-filed');
+const searchText = searchField.value;
+const wrongMessage = document.getElementById('wrongInputMessage');
+const searchResult = document.getElementById('search-result');
+const phoneDetailsArea = document.getElementById('phone-details');
+const getSearchResultCount = document.getElementById('searchResultCount');
+
 // call api by search filed value
 const searchPhone = () => {
     const searchField = document.getElementById('search-filed');
@@ -6,40 +14,47 @@ const searchPhone = () => {
     //clear input value
     searchField.value = '';
 
-    if (searchText == '' || null || undefined){
+    if (searchText == ''){
         wrongMessage.style.display = 'block';
-        // notFoundMessage.style.display = 'none';
+        notFoundMessage.style.display = 'none';
     }
     else{
         wrongMessage.style.display = 'none';
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
         fetch(url)
             .then(res => res.json())
-            .then(data => displaySearchResult(data.data));
+            // .then(data => displaySearchResult(data.data));
+            .then(data => displaySearchResult(data.data.slice(0, 20)));
     }
 }
-const searchField = document.getElementById('search-filed');
-const searchText = searchField.value;
-
-
-const wrongMessage = document.getElementById('wrongInputMessage');
-const searchResult = document.getElementById('search-result');
-const phoneDetailsArea = document.getElementById('phone-details');
 
 // display search result 
 const displaySearchResult = (phones) => {
-    
+    getSearchResultCount.innerHTML=`
+    getSearchResultCount.style.display = 'block';
+    ${phones.length}
+    `;
+
+    // error handale message
     if(searchText == phones){
         notFoundMessage.style.display = 'block';
         searchResult.innerHTML = '';
+        getSearchResultCount.style.display = 'none';
+        phoneDetailsArea.innerHTML = '';
     }
 
     else{
+        // clear dispaly
         searchResult.innerHTML = '';
         phoneDetailsArea.innerHTML = '';
         notFoundMessage.style.display = 'none';
+        getSearchResultCount.style.display = 'block';
 
         phones.forEach(phone => {
+            getSearchResultCount.innerHTML = `
+            Display total Device : ${phones.length}
+            `;
+
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
@@ -68,13 +83,18 @@ const phoneDetails = phoneId => {
 }
 
 const displayPhoneDetails = phoneDetails =>{
+    console.log(phoneDetails);
+    console.log(phoneDetails.releaseDate);
+
+    
+
     phoneDetailsArea.innerHTML = `
     <div class="card m-5" >
         <img   src="${phoneDetails.image}" class="card-img-top img-fluid w-auto mx-auto p-3" alt="...">
         <div class="card-body p-2">
             <h5 class="card-title text-center">${phoneDetails.name} Full Specifications</h5>
             <p class="card-text">Brand: ${phoneDetails.brand}</p>
-            <p class="card-text">Release Date: ${phoneDetails.releaseDate}</p>
+            <p class="card-text">Release Date: ${phoneDetails.releaseDate ? phoneDetails.releaseDate :`<p class="text-danger">Not yet, as soon as release data will be announced</p>`}</p>
             <hr>
             <h5>Main Fetures</h5>
             <p class="card-text">chipSet: ${phoneDetails.mainFeatures.chipSet}</p>
@@ -102,3 +122,4 @@ const displayPhoneDetails = phoneDetails =>{
     `;
     window.scrollTo(0, 0);
 }
+

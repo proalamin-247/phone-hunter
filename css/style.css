@@ -2,6 +2,6 @@ body {
   background-color: rgba(222, 241, 215, 0.411);
 }
 
-#wrongInputMessage ,#notFoundMessage{
+#wrongInputMessage ,#notFoundMessage, #searchResultCount{
   display: none;
 }
