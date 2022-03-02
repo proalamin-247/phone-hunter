@@ -110,12 +110,12 @@ const displayPhoneDetails = phoneDetails =>{
             ${phoneDetails.mainFeatures.sensors[5]}</p>
             <hr>
             <h4>Others</h4>
-            <p class="card-text"><span class="fw-bold">Bluetooth: </span>${phoneDetails.others.Bluetooth}</p>
-            <p class="card-text"><span class="fw-bold">GPS: </span>${phoneDetails.others.GPS}</p>
-            <p class="card-text"><span class="fw-bold">NFC: </span>${phoneDetails.others.NFC}</p>
-            <p class="card-text"><span class="fw-bold">Radio: </span>${phoneDetails.others.Radio}</p>
-            <p class="card-text"><span class="fw-bold">USB: </span>${phoneDetails.others.USB}</p>
-            <p class="card-text"><span class="fw-bold">WLAN: </span>${phoneDetails.others.WLAN}</p>
+            <p class="card-text"><span class="fw-bold">Bluetooth: </span>${phoneDetails.others?.Bluetooth ? phoneDetails.others.Bluetooth : `<h6 class="text-danger">No have others feature (Bluetooth)</h6>`}</p>
+            <p class="card-text"><span class="fw-bold">GPS: </span>${phoneDetails.others?.GPS ? phoneDetails.others.GPS : `<h6 class="text-danger">No have others feature (GPS)</h6>`}</p>
+            <p class="card-text"><span class="fw-bold">NFC: </span>${phoneDetails.others?.NFC ? phoneDetails.others.NFC : `<h6 class="text-danger">No have others feature (NFC)</h6>`}</p>
+            <p class="card-text"><span class="fw-bold">Radio: </span>${phoneDetails.others?.Radio ? phoneDetails.others.Radio : `<h6 class="text-danger">No have others feature (Radio)</h6>`}</p>
+            <p class="card-text"><span class="fw-bold">USB: </span>${phoneDetails.others?.USB ? phoneDetails.others.USB :`<h6 class="text-danger">No have others feature (USB)</h6>`}</p>
+            <p class="card-text"><span class="fw-bold">WLAN: </span>${phoneDetails.others?.WLAN ? phoneDetails.others.WLAN :`<h6 class="text-danger">No have others feature (WAN)</h6>`}</p>
         </div>
     </div>
     `;
