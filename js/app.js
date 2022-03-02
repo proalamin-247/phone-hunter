@@ -17,6 +17,9 @@ const searchPhone = () => {
     if (searchText == ''){
         wrongMessage.style.display = 'block';
         notFoundMessage.style.display = 'none';
+        phoneDetailsArea.innerHTML = '';
+        searchResult.innerHTML = '';
+        getSearchResultCount.innerHTML = '';
     }
     else{
         wrongMessage.style.display = 'none';
@@ -83,26 +86,22 @@ const phoneDetails = phoneId => {
 }
 
 const displayPhoneDetails = phoneDetails =>{
-    console.log(phoneDetails);
-    console.log(phoneDetails.releaseDate);
-
-    
 
     phoneDetailsArea.innerHTML = `
     <div class="card m-5" >
         <img   src="${phoneDetails.image}" class="card-img-top img-fluid w-auto mx-auto p-3" alt="...">
         <div class="card-body p-2">
             <h5 class="card-title text-center">${phoneDetails.name} Full Specifications</h5>
-            <p class="card-text">Brand: ${phoneDetails.brand}</p>
-            <p class="card-text">Release Date: ${phoneDetails.releaseDate ? phoneDetails.releaseDate :`<p class="text-danger">Not yet, as soon as release data will be announced</p>`}</p>
+            <p class="card-text"><span class="fw-bold">Brand: </span>${phoneDetails.brand}</p>
+            <p class="card-text"><span class="fw-bold">Release Date: </span>${phoneDetails.releaseDate ? phoneDetails.releaseDate :`<p class="text-danger">Not yet, as soon as release data will be announced</p>`}</p>
             <hr>
-            <h5>Main Fetures</h5>
-            <p class="card-text">chipSet: ${phoneDetails.mainFeatures.chipSet}</p>
-            <p class="card-text">displaySize: ${phoneDetails.mainFeatures.displaySize}</p>
-            <p class="card-text">memory: ${phoneDetails.mainFeatures.memory}</p>
-            <p class="card-text">storage: ${phoneDetails.mainFeatures.storage}</p>
+            <h4>Main Fetures</h4>
+            <p class="card-text"><span class="fw-bold">ChipSet: </span>${phoneDetails.mainFeatures.chipSet}</p>
+            <p class="card-text"><span class="fw-bold">DisplaySize: </span>${phoneDetails.mainFeatures.displaySize}</p>
+            <p class="card-text"><span class="fw-bold">Memory: </span>${phoneDetails.mainFeatures.memory}</p>
+            <p class="card-text"><span class="fw-bold">Storage: </span>${phoneDetails.mainFeatures.storage}</p>
             <hr>
-            <h5>Sensors</h5>
+            <h4>Sensors</h4>
             <p class="card-text"> ${phoneDetails.mainFeatures.sensors[0]},
             ${phoneDetails.mainFeatures.sensors[1]},
             ${phoneDetails.mainFeatures.sensors[2]},
@@ -110,13 +109,13 @@ const displayPhoneDetails = phoneDetails =>{
             ${phoneDetails.mainFeatures.sensors[4]},
             ${phoneDetails.mainFeatures.sensors[5]}</p>
             <hr>
-            <h5>Others</h5>
-            <p class="card-text">Bluetooth: ${phoneDetails.others.Bluetooth}</p>
-            <p class="card-text">GPS: ${phoneDetails.others.GPS}</p>
-            <p class="card-text">NFC: ${phoneDetails.others.NFC}</p>
-            <p class="card-text">Radio: ${phoneDetails.others.Radio}</p>
-            <p class="card-text">USB: ${phoneDetails.others.USB}</p>
-            <p class="card-text">WLAN: ${phoneDetails.others.WLAN}</p>
+            <h4>Others</h4>
+            <p class="card-text"><span class="fw-bold">Bluetooth: </span>${phoneDetails.others.Bluetooth}</p>
+            <p class="card-text"><span class="fw-bold">GPS: </span>${phoneDetails.others.GPS}</p>
+            <p class="card-text"><span class="fw-bold">NFC: </span>${phoneDetails.others.NFC}</p>
+            <p class="card-text"><span class="fw-bold">Radio: </span>${phoneDetails.others.Radio}</p>
+            <p class="card-text"><span class="fw-bold">USB: </span>${phoneDetails.others.USB}</p>
+            <p class="card-text"><span class="fw-bold">WLAN: </span>${phoneDetails.others.WLAN}</p>
         </div>
     </div>
     `;
